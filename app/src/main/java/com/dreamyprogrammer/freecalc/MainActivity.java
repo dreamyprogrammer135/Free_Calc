@@ -17,8 +17,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setfindView();
+        findView();
         setPresets();
+
     }
 
     private void setPresets() {
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         editTextNotModify.setInputType(InputType.TYPE_NULL);
     }
 
-    private void setfindView() {
+    private void findView() {
         editTextModify = findViewById(R.id.et_modify);
         editTextNotModify = findViewById(R.id.et_not_modify);
     }

@@ -11,5 +11,5 @@
     <color name="number_text_color">#000000</color>
     <color name="operation_color">#66FF9800</color>
     <color name="equally">#669277C3</color>
-    <color name="wwhite_transparent">#00FDFCFC</color>
+    <color name="white_transparent">#00FDFCFC</color>
 </resources>

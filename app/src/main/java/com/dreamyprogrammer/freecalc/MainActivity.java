@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         Boolean b2 = false;
         if(mSave.contains(APP_PREFERENCES_EXPRESSION)) {
             exp.append(mSave.getString(APP_PREFERENCES_EXPRESSION, "0"));
+        } else {
+            exp.append("0");
         }
         if(mSave.contains(APP_PREFERENCES_LAST_CHARACTER_OPERATION)) {
             b1 =mSave.getBoolean(APP_PREFERENCES_LAST_CHARACTER_OPERATION, false);
@@ -69,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
             calculator.setExpression(exp);
             calculator.setLastCharacterOperatin(b1);
             calculator.setStateSeparator(b2);
+
         } else {
             calculator = new SimpleCalculator(exp,b1,b2);
         }

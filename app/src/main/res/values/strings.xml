@@ -17,10 +17,11 @@
     <string name="equally" translatable="false">=</string>
     <string name="parenthesis_right" translatable="false">(</string>
     <string name="parenthesis_left" translatable="false">)</string>
-    <string name="quadratic" translatable="false">x²</string>
     <string name="division" translatable="false">/</string>
     <string name="percent" translatable="false">%</string>
-    <string name="clean_entry" translatable="false">ce</string>
+    <string name="clean_entry" translatable="false">⟸</string>
     <string name="clean" translatable="false">c</string>
     <string name="ellipsis" translatable="false">︙</string>
+    <string name="bc" translatable="false">bc</string>
+    <string name="h">h</string>
 </resources>

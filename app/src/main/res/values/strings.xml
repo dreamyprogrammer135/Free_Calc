@@ -24,4 +24,8 @@
     <string name="ellipsis" translatable="false">︙</string>
     <string name="bc" translatable="false">bc</string>
     <string name="h">h</string>
+    <string name="does_not_work">Does not work</string>
+    <string name="Action">Action</string>
+    <string name="night" translatable="false">N</string>
+    <string name="day" translatable="false">D</string>
 </resources>

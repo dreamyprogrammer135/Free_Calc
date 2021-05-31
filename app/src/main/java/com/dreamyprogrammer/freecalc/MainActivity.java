@@ -1,6 +1,7 @@
 package com.dreamyprogrammer.freecalc;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 
 
@@ -19,18 +21,21 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewNotModify;
     private EditText editTextModify;
     private SimpleCalculator calculator;
-    private Button buttonHistory, buttonSettings;
+    private MaterialButton buttonHistory, buttonSettings;
     public static final String APP_PREFERENCES = "save_settings";
     public static final String APP_PREFERENCES_EXPRESSION = "expression";
-    public static final String APP_PREFERENCES_LAST_CHARACTER_OPERATION = "lastCharacterOperatin";
+    public static final String APP_PREFERENCES_LAST_CHARACTER_OPERATION = "lastCharacterOperation";
     public static final String APP_PREFERENCES_STATE_SEPARATOR = "stateSeparator";
+//    public static final String KEY_CUSTOM_THEME_CHECKED = "themeChecked";
+//    private Boolean isCustomThemeChecked = false;
+
     SharedPreferences mSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.getDefaultNightMode());
         findView();
         setPresets();
     }
@@ -57,9 +62,9 @@ public class MainActivity extends AppCompatActivity {
         Boolean b1 = false;
         Boolean b2 = false;
         if(mSave.contains(APP_PREFERENCES_EXPRESSION)) {
-            exp.append(mSave.getString(APP_PREFERENCES_EXPRESSION, "0"));
+            exp.append(mSave.getString(APP_PREFERENCES_EXPRESSION, getResources().getString(R.string._0)));
         } else {
-            exp.append("0");
+            exp.append(getResources().getString(R.string._0));
         }
         if(mSave.contains(APP_PREFERENCES_LAST_CHARACTER_OPERATION)) {
             b1 =mSave.getBoolean(APP_PREFERENCES_LAST_CHARACTER_OPERATION, false);
@@ -144,15 +149,13 @@ public class MainActivity extends AppCompatActivity {
         buttonHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v, "Пока кнопка истории не работает", Snackbar.LENGTH_SHORT)
-                        .setAction("Action", null).show();
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }
         });
         buttonSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v, "Пока кнопка настроек не работает", Snackbar.LENGTH_SHORT)
-                        .setAction("Action", null).show();
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             }
         });
     }
@@ -162,6 +165,6 @@ public class MainActivity extends AppCompatActivity {
         textViewNotModify = findViewById(R.id.et_not_modify);
         buttonHistory = findViewById(R.id.button_history);
         buttonSettings = findViewById(R.id.button_settings);
-    }
 
+    }
 }

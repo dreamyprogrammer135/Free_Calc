@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.getDefaultNightMode());
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.getDefaultNightMode());
         findView();
         setPresets();
     }
@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
         buttonSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             }
         });
     }

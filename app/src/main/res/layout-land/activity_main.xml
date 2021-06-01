@@ -22,12 +22,12 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_settings"
                 style="@style/button_simple"
-                android:text="@string/night" />
+                android:text="@string/ellipsis" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_history"
                 style="@style/button_simple"
-                android:text="@string/day" />
+                android:text="@string/h" />
 
             <EditText
                 android:id="@+id/et_modify"

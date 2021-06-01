@@ -27,5 +27,16 @@
     <string name="does_not_work">Does not work</string>
     <string name="Action">Action</string>
     <string name="night" translatable="false">N</string>
-    <string name="day" translatable="false">D</string>
+    <string name="day">day</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Themes</string>
+
+    <string name="sets_theme">Sets the theme</string>
+
+    <string-array name="text_style">
+        <item>night</item>
+        <item>day</item>
+    </string-array>
 </resources>

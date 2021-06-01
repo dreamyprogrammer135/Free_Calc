@@ -2,11 +2,14 @@ package com.dreamyprogrammer.freecalc;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.preference.PreferenceManager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,8 +29,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String APP_PREFERENCES_EXPRESSION = "expression";
     public static final String APP_PREFERENCES_LAST_CHARACTER_OPERATION = "lastCharacterOperation";
     public static final String APP_PREFERENCES_STATE_SEPARATOR = "stateSeparator";
-//    public static final String KEY_CUSTOM_THEME_CHECKED = "themeChecked";
-//    private Boolean isCustomThemeChecked = false;
+    public static final String CALC_DATA = "calcData";
 
     SharedPreferences mSave;
 
@@ -41,9 +43,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         getShared();
+        readFromPreference();
+
+        Bundle initialBundle = getIntent().getExtras();
+        if (initialBundle != null){
+            textViewNotModify.setText(initialBundle.getString(CALC_DATA));
+            StringBuilder s = new StringBuilder();
+            s.append(initialBundle.getString(CALC_DATA));
+            calculator.setExpression(s);
+            calculator.getEquallyn();
+        }
+
+
+
     }
 
     @Override
@@ -146,18 +166,22 @@ public class MainActivity extends AppCompatActivity {
             findViewById(buttonActionsIds[i]).setOnClickListener(buttonActionsClickListener);
         }
 
-        buttonHistory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            }
+        buttonHistory.setOnClickListener(v -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO));
+
+        buttonSettings.setOnClickListener(v -> {
+            Intent runSettings = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(runSettings);
         });
-        buttonSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            }
-        });
+    }
+
+    private void readFromPreference() {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        String value = sharedPref.getString("list_themes", null);
+        if (value == null || value.equals(getResources().getString(R.string.day))){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
     }
 
     private void findView() {

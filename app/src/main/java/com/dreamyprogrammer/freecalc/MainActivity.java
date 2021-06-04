@@ -1,7 +1,5 @@
 package com.dreamyprogrammer.freecalc;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,20 +9,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.snackbar.Snackbar;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView textViewNotModify;
-    private EditText editTextModify;
-    private SimpleCalculator calculator;
-    private Button buttonHistory, buttonSettings;
     public static final String APP_PREFERENCES = "save_settings";
     public static final String APP_PREFERENCES_EXPRESSION = "expression";
     public static final String APP_PREFERENCES_LAST_CHARACTER_OPERATION = "lastCharacterOperatin";
     public static final String APP_PREFERENCES_STATE_SEPARATOR = "stateSeparator";
-    SharedPreferences mSave;
+    private TextView textViewNotModify;
+    private EditText editTextModify;
+    private SimpleCalculator calculator;
+    private Button buttonHistory, buttonSettings;
+    private SharedPreferences sharedSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,28 +44,28 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        SharedPreferences.Editor editor = mSave.edit();
+        SharedPreferences.Editor editor = sharedSave.edit();
         editor.putString(APP_PREFERENCES_EXPRESSION, calculator.getExpression());
         editor.putBoolean(APP_PREFERENCES_LAST_CHARACTER_OPERATION, calculator.getLastCharacterOperatin());
         editor.putBoolean(APP_PREFERENCES_STATE_SEPARATOR, calculator.getStateSeparator());
         editor.apply();
     }
 
-    private void getShared(){
-        mSave = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+    private void getShared() {
+        sharedSave = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         StringBuilder exp = new StringBuilder();
         Boolean b1 = false;
         Boolean b2 = false;
-        if(mSave.contains(APP_PREFERENCES_EXPRESSION)) {
-            exp.append(mSave.getString(APP_PREFERENCES_EXPRESSION, "0"));
+        if (sharedSave.contains(APP_PREFERENCES_EXPRESSION)) {
+            exp.append(sharedSave.getString(APP_PREFERENCES_EXPRESSION, "0"));
         } else {
             exp.append("0");
         }
-        if(mSave.contains(APP_PREFERENCES_LAST_CHARACTER_OPERATION)) {
-            b1 =mSave.getBoolean(APP_PREFERENCES_LAST_CHARACTER_OPERATION, false);
+        if (sharedSave.contains(APP_PREFERENCES_LAST_CHARACTER_OPERATION)) {
+            b1 = sharedSave.getBoolean(APP_PREFERENCES_LAST_CHARACTER_OPERATION, false);
         }
-        if(mSave.contains(APP_PREFERENCES_EXPRESSION)) {
-            b2 = mSave.getBoolean(APP_PREFERENCES_STATE_SEPARATOR, false);
+        if (sharedSave.contains(APP_PREFERENCES_EXPRESSION)) {
+            b2 = sharedSave.getBoolean(APP_PREFERENCES_STATE_SEPARATOR, false);
         }
         if (calculator != null) {
             calculator.setExpression(exp);
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             calculator.setStateSeparator(b2);
 
         } else {
-            calculator = new SimpleCalculator(exp,b1,b2);
+            calculator = new SimpleCalculator(exp, b1, b2);
         }
         editTextModify.setText(calculator.getEquallyn());
         textViewNotModify.setText(calculator.getText());
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
     private void setPresets() {
         getSupportActionBar().hide();
         editTextModify.setInputType(InputType.TYPE_NULL);
-        int[] buttonNumIds = new int[] {
+        int[] buttonNumIds = new int[]{
                 R.id.button_1,
                 R.id.button_2,
                 R.id.button_3,

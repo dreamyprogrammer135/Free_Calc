@@ -4,29 +4,6 @@ import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
 
 public class SimpleCalculator {
-    public void setExpression(StringBuilder expression) {
-        this.expression = expression;
-    }
-
-    public void setLastCharacterOperatin(Boolean lastCharacterOperatin) {
-        this.lastCharacterOperatin = lastCharacterOperatin;
-    }
-
-    public void setStateSeparator(Boolean stateSeparator) {
-        this.stateSeparator = stateSeparator;
-    }
-
-    public String getExpression() {
-        return expression.toString();
-    }
-
-    public Boolean getLastCharacterOperatin() {
-        return lastCharacterOperatin;
-    }
-
-    public Boolean getStateSeparator() {
-        return stateSeparator;
-    }
 
     private StringBuilder expression = new StringBuilder();
     private Boolean lastCharacterOperatin = true;
@@ -34,7 +11,8 @@ public class SimpleCalculator {
     private String expressionFinal;
 
     public SimpleCalculator() {
-        expression.append("0");
+        this.expression.setLength(0);
+        this.expression.append("0");
     }
 
     public SimpleCalculator(StringBuilder expression, Boolean lastCharacterOperatin, Boolean stateSeparator) {
@@ -44,11 +22,35 @@ public class SimpleCalculator {
         getEquallyn();
     }
 
-    public void onButtonNumPressed(int buttonId){
-        if(expression.substring(0).equals("0")) {
+    public String getExpression() {
+        return expression.toString();
+    }
+
+    public void setExpression(StringBuilder expression) {
+        this.expression = expression;
+    }
+
+    public Boolean getLastCharacterOperatin() {
+        return lastCharacterOperatin;
+    }
+
+    public void setLastCharacterOperatin(Boolean lastCharacterOperatin) {
+        this.lastCharacterOperatin = lastCharacterOperatin;
+    }
+
+    public Boolean getStateSeparator() {
+        return stateSeparator;
+    }
+
+    public void setStateSeparator(Boolean stateSeparator) {
+        this.stateSeparator = stateSeparator;
+    }
+
+    public void onButtonNumPressed(int buttonId) {
+        if (expression.substring(0).equals("0")) {
             expression.deleteCharAt(0);
         }
-        switch (buttonId){
+        switch (buttonId) {
             case R.id.button_1:
                 expression.append("1");
                 break;
@@ -77,7 +79,7 @@ public class SimpleCalculator {
                 expression.append("9");
                 break;
             case R.id.button_0:
-                if(expression.length() != 0) {
+                if (expression.length() != 0) {
                     expression.append("0");
                 }
                 break;
@@ -88,12 +90,14 @@ public class SimpleCalculator {
                 expression.append(")");
                 break;
             case R.id.button_clean_entry:
-                if(expression.length() > 0) {
+                if (expression.length() > 1) {
                     expression.delete(expression.length() - 1, expression.length());
+                } else if (expression.length() > 0) {
+                    expression.replace(expression.length() - 1, expression.length(), "0");
                 }
                 break;
             case R.id.button_clean:
-                expression.delete(0,expression.length());
+                expression.delete(0, expression.length());
                 expression.append("0");
                 stateSeparator = false;
                 break;
@@ -101,8 +105,8 @@ public class SimpleCalculator {
         lastCharacterOperatin = false;
     }
 
-    public void onButtonActionPressed(int buttonId){
-        if (! lastCharacterOperatin) {
+    public void onButtonActionPressed(int buttonId) {
+        if (!lastCharacterOperatin) {
             lastCharacterOperatin = true;
             switch (buttonId) {
                 case R.id.button_plus:
@@ -132,7 +136,7 @@ public class SimpleCalculator {
                     lastCharacterOperatin = false;
                     break;
                 case R.id.button_separator:
-                    if (! stateSeparator) {
+                    if (!stateSeparator) {
                         expression.append(".");
                         stateSeparator = true;
                     }
@@ -142,21 +146,26 @@ public class SimpleCalculator {
     }
 
     public String getEquallyn() {
+        if (expression.length() == 0) {
+            expression.append("0");
+        }
         expressionFinal = expression.toString();
         expressionFinal = expressionFinal.replaceAll("%", "/100");
         Context rhino = Context.enter();
         rhino.setOptimizationLevel(-1);
         try {
             Scriptable scriptable = rhino.initStandardObjects();
-            return rhino.evaluateString(scriptable, expressionFinal,"javascript", 1, null).toString();
+            return rhino.evaluateString(scriptable, expressionFinal, "javascript", 1, null).toString();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             return "Error";
         }
     }
 
-    public String getText(){
-      return expression.toString();
+    public String getText() {
+        return expression.toString();
 
-    };
+    }
+
+    ;
 }

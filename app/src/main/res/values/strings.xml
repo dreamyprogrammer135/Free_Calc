@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">Free Calc</string>
+    <string name="_1" translatable="false">1</string>
+    <string name="_2" translatable="false">2</string>
+    <string name="_3" translatable="false">3</string>
+    <string name="plus" translatable="false">+</string>
+    <string name="_4" translatable="false">4</string>
+    <string name="_5" translatable="false">5</string>
+    <string name="_6" translatable="false">6</string>
+    <string name="minus" translatable="false">-</string>
+    <string name="multiplication" translatable="false">х</string>
+    <string name="_7" translatable="false">7</string>
+    <string name="_8" translatable="false">8</string>
+    <string name="_9" translatable="false">9</string>
+    <string name="plus_minus" translatable="false">+/-</string>
+    <string name="_0" translatable="false">0</string>
+    <string name="equally" translatable="false">=</string>
+    <string name="parenthesis_right" translatable="false">(</string>
+    <string name="parenthesis_left" translatable="false">)</string>
+    <string name="division" translatable="false">/</string>
+    <string name="percent" translatable="false">%</string>
+    <string name="clean_entry" translatable="false">⟸</string>
+    <string name="clean" translatable="false">c</string>
+    <string name="ellipsis" translatable="false">︙</string>
+    <string name="bc" translatable="false">bc</string>
+    <string name="h">h</string>
 </resources>

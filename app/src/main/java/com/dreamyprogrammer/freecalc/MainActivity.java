@@ -8,12 +8,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.snackbar.Snackbar;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -26,10 +24,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String APP_PREFERENCES_EXPRESSION = "expression";
     public static final String APP_PREFERENCES_LAST_CHARACTER_OPERATION = "lastCharacterOperation";
     public static final String APP_PREFERENCES_STATE_SEPARATOR = "stateSeparator";
-//    public static final String KEY_CUSTOM_THEME_CHECKED = "themeChecked";
-//    private Boolean isCustomThemeChecked = false;
-
-    SharedPreferences mSave;
+    public static final String CALC_DATA = "calcData";
+    private SharedPreferences mSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +37,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         getShared();
+
+        Bundle initialBundle = getIntent().getExtras();
+        if (initialBundle != null){
+            textViewNotModify.setText(initialBundle.getString(CALC_DATA));
+            StringBuilder s = new StringBuilder();
+            s.append(initialBundle.getString(CALC_DATA));
+            calculator.setExpression(s);
+            calculator.getEquallyn();
+        }
+
+
+
     }
 
     @Override
@@ -146,19 +159,15 @@ public class MainActivity extends AppCompatActivity {
             findViewById(buttonActionsIds[i]).setOnClickListener(buttonActionsClickListener);
         }
 
-        buttonHistory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            }
-        });
-        buttonSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            }
+        buttonHistory.setOnClickListener(v -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO));
+
+        buttonSettings.setOnClickListener(v -> {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//            Intent runSettings = new Intent(MainActivity.this, SettingsActivity.class);
+//            startActivity(runSettings);
         });
     }
+
 
     private void findView() {
         editTextModify = findViewById(R.id.et_modify);

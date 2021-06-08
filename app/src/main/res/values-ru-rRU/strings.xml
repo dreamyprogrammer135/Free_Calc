@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Калькулятор</string>
+    <string name="h">и</string>
+    <string name="does_not_work">Пока кнопка не работает</string>
+    <string name="Action">Действие</string>
+
+    <string name="title_activity_settings">Настройки</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Темы</string>
+    <string name="sets_theme">Устанавливает тему</string>
+    <string name="day">день</string>
+
+    <string-array name="text_style">
+        <item>ночь</item>
+        <item>день</item>
+    </string-array>
+
+</resources>

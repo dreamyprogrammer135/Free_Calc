@@ -158,7 +158,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_separator"
                 style="@style/button_simple"
-                android:text="," />
+                android:text="@string/comma" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_equallyn"

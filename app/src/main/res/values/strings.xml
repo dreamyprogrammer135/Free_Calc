@@ -28,4 +28,5 @@
     <string name="Action">Action</string>
     <string name="night" translatable="false">N</string>
     <string name="day" translatable="false">D</string>
+    <string name="comma" translatable="false">,</string>
 </resources>

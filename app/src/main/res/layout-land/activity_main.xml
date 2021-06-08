@@ -19,17 +19,6 @@
 
         <TableRow style="@style/tale_row">
 
-            <EditText
-                android:id="@+id/et_modify"
-                style="@style/text_edit"
-                android:layout_span="4"
-                android:background="@color/white_transparent"
-                android:inputType="textNoSuggestions"
-                tools:text="23" />
-        </TableRow>
-
-        <TableRow style="@style/tale_row">
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_settings"
                 style="@style/button_simple"
@@ -40,30 +29,16 @@
                 style="@style/button_simple"
                 android:text="@string/day" />
 
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_clean"
-                style="@style/button_simple"
-                android:text="@string/clean" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_clean_entry"
-                style="@style/button_simple"
-                android:text="@string/bc" />
-
+            <EditText
+                android:id="@+id/et_modify"
+                style="@style/text_edit"
+                android:layout_span="5"
+                android:background="@color/white_transparent"
+                android:inputType="textNoSuggestions"
+                tools:text="23" />
         </TableRow>
 
         <TableRow style="@style/tale_row">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_percent"
-                style="@style/button_simple"
-                android:text="@string/percent" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_parenthesis_right"
-                style="@style/button_simple"
-                android:text="@string/parenthesis_right" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_parenthesis_left"
@@ -71,13 +46,9 @@
                 android:text="@string/parenthesis_left" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_division"
-                style="@style/button_orange"
-                android:text="@string/division" />
-        </TableRow>
-
-
-        <TableRow style="@style/tale_row">
+                android:id="@+id/button_percent"
+                style="@style/button_simple"
+                android:text="@string/percent" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_7"
@@ -95,13 +66,27 @@
                 android:text="@string/_9" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_multiplication"
+                android:id="@+id/button_minus"
                 style="@style/button_orange"
-                android:text="@string/multiplication" />
+                android:text="@string/minus" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_division"
+                style="@style/button_orange"
+                android:text="@string/division" />
         </TableRow>
 
-
         <TableRow style="@style/tale_row">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_parenthesis_right"
+                style="@style/button_simple"
+                android:text="@string/parenthesis_right" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_separator"
+                style="@style/button_simple"
+                android:text="@string/comma" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_4"
@@ -119,12 +104,27 @@
                 android:text="@string/_6" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_minus"
+                android:id="@+id/button_plus"
                 style="@style/button_orange"
-                android:text="@string/minus" />
+                android:text="@string/plus" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_multiplication"
+                style="@style/button_orange"
+                android:text="@string/multiplication" />
         </TableRow>
 
         <TableRow style="@style/tale_row">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_clean_entry"
+                style="@style/button_simple"
+                android:text="@string/bc" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_0"
+                style="@style/button_simple"
+                android:text="@string/_0" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_1"
@@ -142,28 +142,15 @@
                 android:text="@string/_3" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_plus"
-                style="@style/button_orange"
-                android:text="@string/plus" />
-        </TableRow>
-
-        <TableRow style="@style/tale_row">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_0"
-                style="@style/button_simple"
-                android:layout_span="2"
-                android:text="@string/_0" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_separator"
-                style="@style/button_simple"
-                android:text="@string/comma" />
-
-            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_equallyn"
                 style="@style/button_purple"
                 android:text="@string/equally" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_clean"
+                style="@style/button_simple"
+                android:text="@string/clean" />
+
         </TableRow>
 
     </TableLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Калькулятор</string>
+    <string name="h">и</string>
+    <string name="does_not_work">Пока кнопка не работает</string>
+    <string name="Action">Действие</string>
+</resources>
